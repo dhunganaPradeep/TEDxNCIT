@@ -1,0 +1,32 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/misc/ContactSection.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Contact | ${SITE.title}`;
+---
+
+<!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://tedx.ncit.edu.np/contact",
+    "url": "https://tedx.ncit.edu.np/contact",
+    "name": "Contact Us | TEDxNCIT",
+    "description":
+      "Got questions or ideas? Reach out to TEDxNCIT—we’re eager to connect and collaborate with you!",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://tedx.ncit.edu.np",
+      "name": "TEDxNCIT",
+      "description":
+        "TEDxNCIT, hosted by Nepal College of Information Technology (NCIT), is an independently organized TED event. It features short, powerful talks under a license from TED.",
+    },
+    "inLanguage": "en-US"
+  }}
+>
+  <ContactSection />
+</MainLayout>

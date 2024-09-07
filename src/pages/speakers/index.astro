@@ -1,0 +1,76 @@
+---
+// Importing necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import CardSmall from "@components/ui/cards/CardSmall.astro";
+
+// Importing necessary functions from Astro
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@data/constants";
+
+// Fetching all the speaker related content and sorting it by main.id
+const speaker: CollectionEntry<"speakers">[] = (
+  await getCollection("speakers")
+).sort(
+  (a: CollectionEntry<"speakers">, b: CollectionEntry<"speakers">) =>
+    a.data.main.id - b.data.main.id,
+);
+
+// Define variables for page content
+const title: string = "Speakers";
+const subTitle: string =
+  "Meet the brilliant minds behind TEDxNCIT. Our speakers come from diverse backgrounds, each bringing unique perspectives and stories that will inspire and ignite change.";
+
+
+const pageTitle: string = `Speakers | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://tedx.ncit.edu.np/speakers",
+    "url": "https://tedx.ncit.edu.np/speakers",
+    "name": "Speakers | TEDxNCIT",
+    "description": "TEDxNCIT is an independently organized TED event that we are hosting here at the Nepal College of Information Technology (NCIT). Like other TEDx events, TEDxNCIT operates under a license from TED, a nonprofit organization devoted to spreading ideas in the form of short, powerful talks.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://tedx.ncit.edu.np",
+      "name": "TEDxNCIT",
+      "description": "TEDxNCIT, hosted by Nepal College of Information Technology (NCIT), is an independently organized TED event. It features short, powerful talks under a license from TED."
+    },
+    "inLanguage": "en-US"
+  }}
+>
+  <div
+    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+  >
+    <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
+      <div class="flex items-center gap-12">
+        <h1
+          class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+        >
+          {title}
+        </h1>
+        {
+          subTitle && (
+            <p class="hidden max-w-screen-sm text-pretty text-neutral-600 dark:text-neutral-400 md:block">
+              {subTitle}
+            </p>
+          )
+        }
+      </div>
+    </div>
+    <!--Displaying Speakers in alternating styles. Alternative speaker gets different card styling.-->
+    <!--Maps through all speaker entries and displays them with CardSmall componetn.-->
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+      {
+        speaker.map((speaker, index) => {
+            return <CardSmall speaker={speaker} />;
+        })
+      }
+    </section>
+  </div>
+
+</MainLayout>

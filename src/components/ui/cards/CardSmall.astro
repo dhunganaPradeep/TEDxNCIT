@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import Icon from "@components/ui/icons/Icon.astro";
+import type { CollectionEntry } from "astro:content";
+
+const { speaker } = Astro.props;
+
+interface Props {
+  speaker: CollectionEntry<"speakers">;
+}
+
+const imageClass =
+  "absolute inset-0 h-full w-full object-cover object-center transition duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110";
+---
+
+<a
+  href={"/speakers/" + speaker.slug}
+  data-astro-prefetch
+  class="group relative flex h-60 items-end overflow-hidden rounded-xl shadow-lg outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
+>
+  <Image
+    src={speaker.data.main.imgCard}
+    alt={speaker.data.main.imgAlt}
+    draggable={"false"}
+    class={imageClass}
+    format={"avif"}
+  />
+  <div
+    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-800 via-transparent to-transparent opacity-50"
+  >
+  </div>
+  <span
+    class="relative mb-3 ml-4 inline-block text-sm font-bold text-neutral-50 transition duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110 md:ml-5 md:text-lg"
+    >{speaker.data.description} <Icon name="openInNew" />
+  </span>
+</a>

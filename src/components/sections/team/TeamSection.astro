@@ -1,0 +1,77 @@
+---
+import Icon from "@components/ui/icons/Icon.astro";
+
+interface Member {
+  name: string;
+  role: string;
+  img: string;
+  imgAlt: string;
+  socials: {
+    instagram?: string;
+    github?: string;
+    website?: string;
+  };
+}
+
+interface Props {
+  title: string;
+  description: string;
+  members: Member[];
+}
+
+const { title, description, members }: Props = Astro.props;
+---
+
+<section class="my-12 mb-20 ml-4 md:ml-8">
+  <h2 class="text-4xl font-extrabold mb-4 text-neutral-900 dark:text-neutral-100">{title}</h2>
+  <p class="mb-8 text-xl font-light text-pretty text-neutral-600 dark:text-neutral-400">{description}</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {members.map((member) => (
+      <div class="text-center group">
+        <div class="overflow-hidden rounded-lg"> 
+          <img
+            class="rounded-lg mx-auto transition-transform duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110" 
+            src={member.img}
+            alt={member.imgAlt}
+          />
+        </div>
+        <h3 class="mt-4 text-lg text-neutral-900 dark:text-neutral-100 font-bold">{member.name}</h3>
+        <p class="text-sm text-neutral-600">{member.role}</p>
+        <div class="flex justify-center mt-2 space-x-3">
+          {member.socials.instagram && (
+            <a
+              href={member.socials.instagram}
+              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="instagramFooter" />
+            </a>
+          )}
+          {member.socials.github && (
+            <a
+              href={member.socials.github}
+              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="githubFooter" />
+            </a>
+          )}
+          {member.socials.website && (
+            <a
+              href={member.socials.website}
+              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="website" />
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+

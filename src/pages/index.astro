@@ -1,0 +1,75 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import heroImage from "@images/hero-image.svg";
+import features from "@data/features.json";
+import Ticket from "@/components/sections/pricing/Ticket.astro";
+import tedImage from "@images/ted.png";
+import tedxImage from "@images/tedx.jpg";
+import tedncit from "@images/tedncit.png";
+import tedxncitImage from "@images/tedncit.png";
+---
+
+<MainLayout>
+  <HeroSection
+    title={`Experience <span class="text-yellow-500 font-extrabold dark:text-yellow-400">TEDxNCIT</span> <br> A Platform for <span class="text-yellow-500 dark:text-yellow-400">Inspiration</span> and <span class="text-yellow-500 dark:text-yellow-400">Innovation</span>`}
+    subTitle="Join us for a day of powerful talks that spark deep discussion and inspire innovation. TEDxNCIT brings the spirit of TED to our local community, showcasing ideas worth spreading."
+    primaryBtn="Register Now"
+    primaryBtnURL="/register"
+    src={heroImage}
+    alt="TEDxNCIT event banner"
+  />
+
+
+  <FeaturesGeneral
+    title="Why Attend TEDxNCIT?"
+    subTitle="TEDxNCIT is more than just an event; it's a movement. We bring together thought leaders, innovators, and creatives from all walks of life to share their ideas and drive change in our community."
+    src={tedncit}
+    alt="Audience at TEDxNCIT"
+    features={features}
+  />
+
+  <FeaturesNavs
+    title={`What <span class="text-yellow-500 dark:text-yellow-400">TED</span><span class="text-yellow-500 dark:text-yellow-400"> TEDx</span> and <span class="text-yellow-500 dark:text-yellow-400">TEDxNCIT</span> offer to inspire and educate`}
+    tabs={[
+      {
+        heading: "TED",
+        content:
+          "TED is a global community dedicated to spreading ideas, usually in the form of short, powerful talks. TED began in 1984 as a conference where Technology, Entertainment, and Design converged, and today covers almost all topics — from science to business to global issues.",
+        svg: "presentaion",
+        src: tedImage,
+        alt: "TED conference stage with speaker",
+        first: true,
+      },
+      {
+        heading: "TEDx",
+        content:
+          "TEDx is a grassroots initiative, created in the spirit of TED's mission, 'ideas worth spreading.' The program is designed to help communities, organizations, and individuals produce TED-style events at the local level.",
+        svg: "groups",
+        src: tedxImage,
+        alt: "TEDx event with audience and speaker",
+      },
+      {
+        heading: "TEDxNCIT",
+        content:
+          "TEDxNCIT is an independently organized TED event at NCIT, bringing together people to share a TED-like experience. At a TEDxNCIT event, TED Talks video and live speakers combine to spark deep discussion and connection.",
+        svg: "lightbulb",
+        src: tedxncitImage,
+        alt: "TEDxNCIT event",
+      },
+    ]}
+  />
+
+  <HeroSectionAlt
+    title="Wave of Bytes"
+    subTitle="Join us at TEDxNCIT to discover inspiring talks and innovative ideas that can change the world."
+    eventDate="2024-09-31T00:00:00Z"
+  />
+
+  <Ticket />
+
+</MainLayout>

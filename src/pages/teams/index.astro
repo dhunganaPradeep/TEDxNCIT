@@ -1,0 +1,133 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
+import TeamSection from "@components/sections/team/TeamSection.astro";
+
+import teamMember1 from "@images/blog/nischal.jpg";
+import teamMember2 from "@images/blog/pradip.jpg";
+import teamMember3 from "@images/blog/vizion.jpg";
+
+const coreTeamMembers = [
+  {
+    name: "Member 1",
+    role: "Lead Organizer",
+    img: teamMember1.src,
+    imgAlt: "Lead Organizer image",
+    socials: {
+      instagram: "https://instagram.com/member1",
+      github: "https://github.com/member1",
+      website: "https://member1website.com"
+    }
+  },
+  {
+    name: "Member 2",
+    role: "Co-Organizer",
+    img: teamMember2.src,
+    imgAlt: "Co-Organizer image",
+    socials: {
+      instagram: "https://instagram.com/member2"
+    }
+  },
+  {
+    name: "Member 3",
+    role: "Content Creator",
+    img: teamMember3.src,
+    imgAlt: "Content Creator image",
+    socials: {
+      github: "https://github.com/member3",
+      website: "https://member3website.com"
+    }
+  },
+];
+
+const advisors = [
+  {
+    name: "Advisor 1",
+    role: "Strategy Advisor",
+    img: teamMember1.src,
+    imgAlt: "Strategy Advisor image",
+    socials: {
+      instagram: "https://instagram.com/advisor1"
+    }
+  },
+  {
+    name: "Advisor 2",
+    role: "Marketing Advisor",
+    img: teamMember2.src,
+    imgAlt: "Marketing Advisor image",
+    socials: {
+      website: "https://advisor2website.com"
+    }
+  },
+  {
+    name: "Advisor 3",
+    role: "Technical Advisor",
+    img: teamMember3.src,
+    imgAlt: "Technical Advisor image",
+    socials: {
+      instagram: "https://instagram.com/advisor3"
+    }
+  },
+];
+
+const volunteers = [
+  {
+    name: "Volunteer 1",
+    role: "Event Coordinator",
+    img: teamMember1.src,
+    imgAlt: "Event Coordinator image",
+    socials: {
+      github: "https://github.com/volunteer1"
+    }
+  },
+  {
+    name: "Volunteer 2",
+    role: "Logistics Manager",
+    img: teamMember2.src,
+    imgAlt: "Logistics Manager image",
+    socials: {
+      instagram: "https://instagram.com/volunteer2"
+    }
+  },
+  {
+    name: "Volunteer 3",
+    role: "Speaker Liaison",
+    img: teamMember3.src,
+    imgAlt: "Speaker Liaison image",
+    socials: {
+      instagram: "https://instagram.com/volunteer3",
+      website: "https://volunteer3website.com"
+    }
+  },
+];
+
+const pageTitle = `Teams | TEDx`;
+---
+
+<MainLayout title={pageTitle}>
+    <MainSection
+      title="Meet the Team"
+      subTitle="Discover the passionate individuals who bring TEDx events to life. From our core team to our advisors and volunteers, each member plays a vital role in making our events memorable."
+      btnExists={true}
+      btnTitle="Join Us"
+      btnURL="#"
+    />
+
+  <TeamSection
+    title="Core Team"
+    description="Meet the dedicated individuals who form the core of TEDx, driving our events forward with creativity and passion."
+    members={coreTeamMembers}
+  />
+
+  <TeamSection
+    title="Advisors"
+    description="Our advisors bring their experience and insight to help shape the vision and direction of TEDx events."
+    members={advisors}
+  />
+
+  <TeamSection
+    title="Volunteers"
+    description="Our volunteers are the heart of TEDx events, bringing dedication and enthusiasm to ensure every event is a success."
+    members={volunteers}
+  />
+</MainLayout>

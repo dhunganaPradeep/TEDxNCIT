@@ -1,0 +1,33 @@
+{
+  "subTitle": "Find Answers to All Your Questions About the Event, Speakers, and More.",
+  "faqs": [
+    {
+      "question": "Is the event in online or offline mode?",
+      "answer": "The event will be held in offline mode and the location will be revealed soon."
+    },
+    {
+      "question": "Will there be a screening of the event inside NCIT?",
+      "answer": "Yes, there will be screenings of the event inside the institute premises."
+    },
+    {
+      "question": "Can the audience interact with the speaker?",
+      "answer": "No, there will be no Q&A session or interaction with the speaker as per the TEDx rules"
+    },
+    {
+      "question": "Will there be charges for offline mode ?",
+      "answer": "Yes, there will be charges for offline mode but will be minimal for the students of NCIT."
+    },
+    {
+      "question": "How do I apply to be a speaker at the event?",
+      "answer": "If you have ‘any ideas worth spreading’ and it matches our theme, please contact us at tedx@ncit.edu.np or any of our social media pages."
+    },
+    {
+      "question": "Will there be recreational events in between the talks (music, storytelling, dance performance etc.)? If so, how can I register to perform?",
+      "answer": "Yes, there will be charges for offline mode but will be minimal for the students of NCIT."
+    },
+    {
+      "question": "Can I get recording of the event afterwards?",
+      "answer": "Yes, the recordings of all the talks will be uploaded on the TEDx official Youtube channel"
+    }
+  ]
+}

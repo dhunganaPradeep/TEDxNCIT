@@ -1,0 +1,22 @@
+[
+  {
+    "heading": "Inspiring Speakers",
+    "content": "Gain fresh perspectives from leading thinkers, innovators, and creators who challenge the status quo and inspire action. TEDxNCIT brings you closer to ideas that matter.",
+    "svg": "mic"
+  },
+  {
+    "heading": "Networking Opportunities",
+    "content": "Connect with a diverse community of professionals, students, and enthusiasts who are passionate about making a difference. TEDxNCIT is your chance to network and collaborate with like-minded individuals.",
+    "svg": "handshake"
+  },
+  {
+    "heading": "Community Impact",
+    "content": "Be a part of a movement that fosters positive change in our community. TEDxNCIT is not just about talks; it's about turning ideas into action and creating a lasting impact.",
+    "svg": "groups"
+  },
+  {
+    "heading": "Live Performances",
+    "content": "Experience captivating performances that bring a new dimension to the TEDxNCIT event. Enjoy music, dance, and art that inspire and entertain, adding vibrancy to the day's discussions.",
+    "svg": "music"
+  }
+]

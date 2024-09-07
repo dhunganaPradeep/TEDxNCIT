@@ -1,0 +1,209 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <section class="max-w-2xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl dark:text-white font-bold text-center mb-4">
+      Register for <span class="text-red-600 dark:text-red-400">TEDx</span>NCIT
+    </h1>
+    <p class="text-center font-bold dark:text-white mb-8">
+      Join us for an inspiring event and connect with like-minded individuals.
+    </p>
+
+    <!-- Progress Bar -->
+    <div class="mb-8">
+      <div class="relative">
+        <div class="flex mb-4 justify-between">
+          <span class="text-lg font-semibold text-red-600 dark:text-red-400">1. Information</span>
+          <span class="text-lg font-semibold text-red-600 dark:text-red-400">2. Payment</span>
+          <span class="text-lg font-semibold text-red-600 dark:text-red-400">3. Thank You</span>
+        </div>
+        <div class="flex items-center">
+          <div id="progress-bar" class="w-2/3 h-2 bg-red-200 dark:bg-red-400 rounded-r-full"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Handling Script -->
+    <script>
+      function updateProgressBar(step) {
+        const progressBar = document.getElementById('progress-bar');
+        const progressWidth = step === 1 ? '0%' : step === 2 ? '50%' : '100%';
+        progressBar.style.width = progressWidth;
+      }
+
+      function showSection(section) {
+        document.querySelectorAll('.form-section').forEach(el => {
+          el.classList.add('hidden');
+        });
+        document.getElementById(section).classList.remove('hidden');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        let currentStep = 1;
+        showSection('info-section');
+        updateProgressBar(currentStep);
+
+        document.querySelector('#next-btn').addEventListener('click', () => {
+          if (currentStep < 3) {
+            currentStep++;
+            showSection(currentStep === 2 ? 'payment-section' : 'thank-you-section');
+            updateProgressBar(currentStep);
+          }
+        });
+
+        document.querySelector('#prev-btn').addEventListener('click', () => {
+          if (currentStep > 1) {
+            currentStep--;
+            showSection(currentStep === 1 ? 'info-section' : 'payment-section');
+            updateProgressBar(currentStep);
+          }
+        });
+
+        document.querySelector('#submit-btn').addEventListener('click', async (event) => {
+          event.preventDefault();
+          const form = document.querySelector('form');
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("/api/sendEmail", {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: { "Content-Type": "application/json" },
+            });
+
+            if (response.ok) {
+              showSection('thank-you-section');
+              updateProgressBar(3);
+            } else {
+              alert("There was an error submitting your registration. Please try again.");
+            }
+          } catch (error) {
+            console.error("Error submitting form", error);
+            alert("There was an error. Please try again later.");
+          }
+        });
+      });
+    </script>
+
+    <!-- Form Component -->
+    <form class="space-y-6">
+      <!-- Information Section -->
+      <div id="info-section" class="form-section">
+        <div class="mb-6">
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Enter your full name"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter your email address"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Phone Number
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Enter your phone number"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Why do you want to attend TEDxNCIT?
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Share your thoughts..."
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:text-white"
+          ></textarea>
+        </div>
+
+        <div class="flex justify-between">
+        <button
+            id="next-btn"
+            type="button"
+            class="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          >
+            Next
+          </button>
+        </div>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div id="payment-section" class="form-section hidden">
+        <div class="mb-6">
+          <img src="/path/to/qr-code-placeholder.png" alt="QR Code" class="w-full h-auto mb-4" />
+          <label for="payment-image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Upload Payment Confirmation
+          </label>
+          <input
+            id="payment-image"
+            name="payment-image"
+            type="file"
+            accept="image/*"
+            required
+            class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-red-500 dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            id="prev-btn"
+            type="button"
+            class="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            Previous
+          </button>
+          <button
+            id="submit-btn"
+            type="button"
+            class="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <!-- Thank You Section -->
+      <div id="thank-you-section" class="form-section hidden">
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">
+          Thank You!
+        </h2>
+        <p class="text-center text-gray-600 dark:text-gray-400">
+          Your registration has been successfully submitted. We will be in touch with you soon.
+        </p>
+      </div>
+    </form>
+  </section>
+</MainLayout>
