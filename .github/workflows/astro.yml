@@ -1,4 +1,4 @@
-name: Deploy Astro site to Pages
+name: Deploy Astro site
 
 on:
   push:
@@ -7,12 +7,7 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 env:
   BUILD_PATH: "."
@@ -60,40 +55,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-
       
-      - name: Debug Outputs
-        run: |
-          echo "Manager: ${{ steps.detect-package-manager.outputs.manager }}"
-          echo "Command: ${{ steps.detect-package-manager.outputs.command }}"
-          echo "Lockfile: ${{ steps.detect-package-manager.outputs.lockfile }}"
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
       
       - name: Build with Astro
         run: |
-          ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+          ${{ steps.detect-package-manager.outputs.runner }} astro build
         working-directory: ${{ env.BUILD_PATH }}
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # Add any additional steps you need here
