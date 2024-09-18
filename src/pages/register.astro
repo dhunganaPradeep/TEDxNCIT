@@ -27,66 +27,82 @@ import MainLayout from "@/layouts/MainLayout.astro";
 
     <!-- Form Handling Script -->
     <script>
-      function updateProgressBar(step) {
+      function updateProgressBar(step: number) {
         const progressBar = document.getElementById('progress-bar');
-        const progressWidth = step === 1 ? '0%' : step === 2 ? '50%' : '100%';
-        progressBar.style.width = progressWidth;
+        if (progressBar) {
+          const progressWidth = step === 1 ? '0%' : step === 2 ? '50%' : '100%';
+          progressBar.style.width = progressWidth;
+        }
       }
-
-      function showSection(section) {
+    
+      function showSection(section: string) {
         document.querySelectorAll('.form-section').forEach(el => {
           el.classList.add('hidden');
         });
-        document.getElementById(section).classList.remove('hidden');
+        const sectionElement = document.getElementById(section);
+        if (sectionElement) {
+          sectionElement.classList.remove('hidden');
+        }
       }
-
+    
       document.addEventListener('DOMContentLoaded', () => {
         let currentStep = 1;
         showSection('info-section');
         updateProgressBar(currentStep);
-
-        document.querySelector('#next-btn').addEventListener('click', () => {
-          if (currentStep < 3) {
-            currentStep++;
-            showSection(currentStep === 2 ? 'payment-section' : 'thank-you-section');
-            updateProgressBar(currentStep);
-          }
-        });
-
-        document.querySelector('#prev-btn').addEventListener('click', () => {
-          if (currentStep > 1) {
-            currentStep--;
-            showSection(currentStep === 1 ? 'info-section' : 'payment-section');
-            updateProgressBar(currentStep);
-          }
-        });
-
-        document.querySelector('#submit-btn').addEventListener('click', async (event) => {
-          event.preventDefault();
-          const form = document.querySelector('form');
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData.entries());
-
-          try {
-            const response = await fetch("/api/sendEmail", {
-              method: "POST",
-              body: JSON.stringify(data),
-              headers: { "Content-Type": "application/json" },
-            });
-
-            if (response.ok) {
-              showSection('thank-you-section');
-              updateProgressBar(3);
-            } else {
-              alert("There was an error submitting your registration. Please try again.");
+    
+        const nextBtn = document.querySelector('#next-btn');
+        const prevBtn = document.querySelector('#prev-btn');
+        const submitBtn = document.querySelector('#submit-btn');
+        const form = document.querySelector('form');
+    
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            if (currentStep < 3) {
+              currentStep++;
+              showSection(currentStep === 2 ? 'payment-section' : 'thank-you-section');
+              updateProgressBar(currentStep);
             }
-          } catch (error) {
-            console.error("Error submitting form", error);
-            alert("There was an error. Please try again later.");
-          }
-        });
+          });
+        }
+    
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+              currentStep--;
+              showSection(currentStep === 1 ? 'info-section' : 'payment-section');
+              updateProgressBar(currentStep);
+            }
+          });
+        }
+    
+        if (submitBtn && form) {
+          submitBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+    
+            try {
+              const response = await fetch("/api/sendEmail", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: { "Content-Type": "application/json" },
+              });
+    
+              if (response.ok) {
+                showSection('thank-you-section');
+                updateProgressBar(3);
+              } else {
+                alert("There was an error submitting your registration. Please try again.");
+              }
+            } catch (error) {
+              console.error("Error submitting form", error);
+              alert("There was an error. Please try again later.");
+            }
+          });
+        }
       });
     </script>
+    
 
     <!-- Form Component -->
     <form class="space-y-6">

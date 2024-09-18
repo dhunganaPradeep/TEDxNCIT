@@ -1,7 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function CountdownTimer({ eventDate }) {
-  const [timeRemaining, setTimeRemaining] = useState(() => getTimeRemaining(eventDate));
+interface CountdownTimerProps {
+  eventDate: string;
+}
+
+interface TimeRemaining {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+function CountdownTimer({ eventDate }: CountdownTimerProps) {
+  const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>(() => getTimeRemaining(eventDate));
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -11,7 +22,7 @@ function CountdownTimer({ eventDate }) {
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, [eventDate]);
 
-  function getTimeRemaining(eventDate) {
+  function getTimeRemaining(eventDate: string): TimeRemaining {
     const now = new Date().getTime();
     const eventTime = new Date(eventDate).getTime();
     const timeDiff = eventTime - now;
