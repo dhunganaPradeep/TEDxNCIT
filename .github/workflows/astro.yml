@@ -16,7 +16,7 @@ concurrency:
 
 env:
   BUILD_PATH: "."
-  
+
 jobs:
   build:
     name: Build
@@ -49,13 +49,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
-      
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      
+
       - name: Cache Node modules
         uses: actions/cache@v3
         with:
@@ -63,6 +57,18 @@ jobs:
             ~/.npm
             ~/.yarn-cache
           key: ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-${{ hashFiles('**/${{ steps.detect-package-manager.outputs.lockfile }}') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-
+      
+      - name: Debug Outputs
+        run: |
+          echo "Manager: ${{ steps.detect-package-manager.outputs.manager }}"
+          echo "Command: ${{ steps.detect-package-manager.outputs.command }}"
+          echo "Lockfile: ${{ steps.detect-package-manager.outputs.lockfile }}"
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
       
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
