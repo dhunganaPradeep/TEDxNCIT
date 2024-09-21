@@ -78,8 +78,8 @@ The website is optimized for SEO using Astro’s built-in SEO features. Proper m
 ## Author
 
 - **Pradip Dhungana**  
-  - **Website**: [dhunganapradip.com.np](https://dhunganapradip.com.np)  
-  - **GitHub**: [github.com/pradipdhungana](https://github.com/pradipdhungana)
+  - [Website](https://dhunganapradip.com.np)  
+  - [GitHub](https://github.com/pradipdhungana)
 
 
 
