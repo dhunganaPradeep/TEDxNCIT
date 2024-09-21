@@ -3,103 +3,181 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@components/ui/blocks/MainSection.astro";
 import TeamSection from "@components/sections/team/TeamSection.astro";
 
-import teamMember1 from "@images/blog/nischal.jpg";
-import teamMember2 from "@images/blog/pradip.jpg";
-import teamMember3 from "@images/blog/vizion.jpg";
+import teamMember1 from "@images/team/coretteam/nischal.jpg";
+import teamMember2 from "@images/team/coretteam/pradip.jpg";
+import teamMember3 from "@images/team/coretteam/vision.jpg";
+import teamMember4 from "@images/team/coretteam/akriti.jpg";
+import teamMember5 from "@images/team/coretteam/ajay.jpg";
+import teamMember6 from "@images/team/coretteam/rishav.jpg";
+import teamMember7 from "@images/team/coretteam/aryn.jpg";
+import teamMember8 from "@images/team/coretteam/prabal.jpg";
+
+import advisor1 from "@images/team/advisors/niranjan.jpeg";
+import advisor2 from "@images/team/advisors/samundra.jpeg";
+import advisor3 from "@images/team/advisors/rishi.jpg";
 
 const coreTeamMembers = [
   {
-    name: "Member 1",
-    role: "Lead Organizer",
+    name: "Nischal Dhakal",
+    role: "Organizer / Licensee",
     img: teamMember1.src,
     imgAlt: "Lead Organizer image",
     socials: {
-      instagram: "https://instagram.com/member1",
-      github: "https://github.com/member1",
-      website: "https://member1website.com"
+      website: "https://nischaldhakal.com.np/",
+      github: "https://github.com/DcodeNischal",
+      instagram: "https://instagram.com/_nischal_dhakal_",
+      linkedIn: "https://linkedin.com/in/nischaldhakal/"
     }
   },
   {
-    name: "Member 2",
+    name: "Pradip Dhungana",
     role: "Co-Organizer",
     img: teamMember2.src,
     imgAlt: "Co-Organizer image",
     socials: {
-      instagram: "https://instagram.com/member2"
+      website: "https://dhunganapradip.com.np",
+      github: "https://github.com/dhunganaPradeep",
+      instagram: "https://instagram.com/pradeep_dhungana/",
+      linkedIn: "https://linkedin.com/in/thatguypradip/"
     }
   },
   {
-    name: "Member 3",
-    role: "Content Creator",
+    name: "Vision Rijal",
+    role: "Coming Soon",
     img: teamMember3.src,
-    imgAlt: "Content Creator image",
+    imgAlt: "Vision image",
     socials: {
-      github: "https://github.com/member3",
-      website: "https://member3website.com"
+      website: "https://visionrijal.com.np/",
+      github: "https://github.com/visionrijal",
+      instagram: "https://instagram.com/undercover_no_more/",
+      linkedIn: "https://linkedin.com/in/vision-rijal-6203b0138/"
+    }
+  },
+  {
+    name: "Akriti Das",
+    role: "Coming Soon",
+    img: teamMember4.src,
+    imgAlt: "Akriti image",
+    socials: {
+      instagram: "https://www.instagram.com/_aakriti_das/",
+      linkedIn: "https://www.linkedin.com/in/aakriti-das-338303209/"
+    }
+  },
+  {
+    name: "Ajay Shankar Singh",
+    role: "Coming Soon",
+    img: teamMember5.src,
+    imgAlt: "Ajay image",
+    socials: {
+      website: "https://www.ajayshankarsingh.com.np/",
+      github: "https://github.com/ajaysingh923",
+      instagram: "https://www.instagram.com/the_azay/",
+      linkedIn: "https://www.linkedin.com/in/ajay-singh-056500209/"
+    }
+  },
+  {
+    name: "Manmohan Shah",
+    role: "Coming Soon",
+    img: teamMember6.src,
+    imgAlt: "Rishav image",
+    socials: {
+      // website: "https://member1website.com",
+      // github: "https://github.com/member1",
+      instagram: "https://www.instagram.com/rishav_saah/",
+      linkedIn: "https://www.linkedin.com/in/rishav-shah-636477225/"
+    }
+  },
+  {
+    name: "Aryan Jha",
+    role: "Coming Soon",
+    img: teamMember7.src,
+    imgAlt: "Aryan image",
+    socials: {
+      github: "https://github.com/aryyyn",
+      instagram: "https://www.instagram.com/aryyyyyn/",
+      linkedIn: "https://www.linkedin.com/in/aryn0012/"
+    }
+  },
+  {
+    // Director, Creative Affairs
+    name: "Prabal Piya",
+    role: "Coming Soon",
+    img: teamMember8.src,
+    imgAlt: "Prabal image",
+    socials: {
+      instagram: "https://www.instagram.com/xpockyyy/",
     }
   },
 ];
 
 const advisors = [
   {
-    name: "Advisor 1",
-    role: "Strategy Advisor",
-    img: teamMember1.src,
-    imgAlt: "Strategy Advisor image",
+    name: "Er. Niranjan Khakurel",
+    role: "Principal",
+    img: advisor1.src,
+    imgAlt: "Principal image",
     socials: {
-      instagram: "https://instagram.com/advisor1"
+      linkedIn: "https://www.linkedin.com/in/niranjan-khakurel-a0571413b/"
     }
   },
   {
-    name: "Advisor 2",
-    role: "Marketing Advisor",
-    img: teamMember2.src,
-    imgAlt: "Marketing Advisor image",
+    name: "Samundra Paudel",
+    role: "Assistant Professor",
+    img: advisor2.src,
+    imgAlt: "Saumndra sir image",
     socials: {
-      website: "https://advisor2website.com"
+      linkedIn: "https://www.linkedin.com/in/samundra-paudel-390b7416/"
     }
   },
   {
-    name: "Advisor 3",
-    role: "Technical Advisor",
-    img: teamMember3.src,
-    imgAlt: "Technical Advisor image",
+    name: "Rishi K. Marseni",
+    role: "Lecturer",
+    img: advisor3.src,
+    imgAlt: "Rishi sir image",
     socials: {
-      instagram: "https://instagram.com/advisor3"
+      linkedIn: "https://www.linkedin.com/in/rkmarseni/"
     }
   },
 ];
 
-const volunteers = [
-  {
-    name: "Volunteer 1",
-    role: "Event Coordinator",
-    img: teamMember1.src,
-    imgAlt: "Event Coordinator image",
-    socials: {
-      github: "https://github.com/volunteer1"
-    }
-  },
-  {
-    name: "Volunteer 2",
-    role: "Logistics Manager",
-    img: teamMember2.src,
-    imgAlt: "Logistics Manager image",
-    socials: {
-      instagram: "https://instagram.com/volunteer2"
-    }
-  },
-  {
-    name: "Volunteer 3",
-    role: "Speaker Liaison",
-    img: teamMember3.src,
-    imgAlt: "Speaker Liaison image",
-    socials: {
-      instagram: "https://instagram.com/volunteer3",
-      website: "https://volunteer3website.com"
-    }
-  },
-];
+// const volunteers = [
+//   {
+//     name: "Volunteer 1",
+//     role: "Event Coordinator",
+//     img: teamMember1.src,
+//     imgAlt: "Event Coordinator image",
+//     socials: {
+//       website: "https://member1website.com",
+//       github: "https://github.com/member1",
+//       instagram: "https://instagram.com/member1",
+//       linkedIn: "https://member1website.com"
+//     }
+//   },
+//   {
+//     name: "Volunteer 2",
+//     role: "Logistics Manager",
+//     img: teamMember2.src,
+//     imgAlt: "Logistics Manager image",
+//     socials: {
+//       website: "https://member1website.com",
+//       github: "https://github.com/member1",
+//       instagram: "https://instagram.com/member1",
+//       linkedIn: "https://member1website.com"
+//     }
+//   },
+//   {
+//     name: "Volunteer 3",
+//     role: "Speaker Liaison",
+//     img: teamMember3.src,
+//     imgAlt: "Speaker Liaison image",
+//     socials: {
+//       website: "https://member1website.com",
+//       github: "https://github.com/member1",
+//       instagram: "https://instagram.com/member1",
+//       linkedIn: "https://member1website.com"
+//     }
+//   },
+// ];
 
 const pageTitle = `Teams | TEDx`;
 ---
@@ -121,13 +199,14 @@ const pageTitle = `Teams | TEDx`;
 
   <TeamSection
     title="Advisors"
-    description="Our advisors bring their experience and insight to help shape the vision and direction of TEDx events."
+    description="Our advisors bring their experience and insight to help shape the vision and direction of TEDxNCIT."
     members={advisors}
   />
+  
 
-  <TeamSection
+  <!-- <TeamSection
     title="Volunteers"
     description="Our volunteers are the heart of TEDx events, bringing dedication and enthusiasm to ensure every event is a success."
     members={volunteers}
-  />
+  /> -->
 </MainLayout>

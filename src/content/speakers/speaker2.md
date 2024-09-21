@@ -1,12 +1,12 @@
 ---
 title: "Nischal Dhakal"
-description: "Visionary Speaker on Technology and Future Trends"
+description: "Coming Soon"
 main:
   id: 2
   content: |
     Nischal Dhakal is a visionary in the field of technology and future trends. With a passion for exploring the digital landscape, Nischal has helped numerous organizations embrace the future through his insightful talks and workshops.
-  imgCard: "@/images/blog/nischal.jpg"
-  imgMain: "@/images/blog/nischal.jpg"
+  imgCard: "@/images/coming.png"
+  imgMain: "@/images/coming.png"
   imgAlt: "Portrait of Nischal Dhakal"
 tabs:
   - id: "tabs-with-card-item-1"
@@ -50,8 +50,8 @@ specificationsRight:
   - title: "Future Trends"
     subTitle: "Regularly forecasts future technology trends and their impact on various industries."
 publications:
-  first: "@/images/blog/nischal.jpg"
-  second: "@/images/blog/nischal.jpg"
+  first: "@/images/coming.png"
+  second: "@/images/coming.png"
 slug: speaker2
 
 

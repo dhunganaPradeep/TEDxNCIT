@@ -10,6 +10,7 @@ interface Member {
     instagram?: string;
     github?: string;
     website?: string;
+    linkedIn?: string;
   };
 }
 
@@ -20,58 +21,54 @@ interface Props {
 }
 
 const { title, description, members }: Props = Astro.props;
+
+// Map for the social platform and its corresponding icon name
+const socialIconMap: Record<string, string> = {
+  instagram: "instagramFooter",
+  github: "githubFooter",
+  website: "website",
+  linkedIn: "linkedInFooter",
+};
 ---
 
 <section class="my-12 mb-20 ml-4 md:ml-8">
   <h2 class="text-4xl font-extrabold mb-4 text-neutral-900 dark:text-neutral-100">{title}</h2>
   <p class="mb-8 text-xl font-light text-pretty text-neutral-600 dark:text-neutral-400">{description}</p>
+
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     {members.map((member) => (
       <div class="text-center group">
-        <div class="overflow-hidden rounded-lg"> 
+        <div class="relative overflow-hidden rounded-lg w-full h-65 sm:h-72 md:h-96 lg:h-[400px] xl:h-[500px]">
           <img
-            class="rounded-lg mx-auto transition-transform duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110" 
+            class="w-full h-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] hover:scale-110"
             src={member.img}
             alt={member.imgAlt}
           />
         </div>
         <h3 class="mt-4 text-lg text-neutral-900 dark:text-neutral-100 font-bold">{member.name}</h3>
         <p class="text-sm text-neutral-600">{member.role}</p>
+
         <div class="flex justify-center mt-2 space-x-3">
-          {member.socials.instagram && (
-            <a
-              href={member.socials.instagram}
-              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name="instagramFooter" />
-            </a>
-          )}
-          {member.socials.github && (
-            <a
-              href={member.socials.github}
-              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name="githubFooter" />
-            </a>
-          )}
-          {member.socials.website && (
-            <a
-              href={member.socials.website}
-              class="transition-transform transform hover:scale-110 hover:text-[#0000EE]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name="website" />
-            </a>
-          )}
+          {Object.entries(member.socials).map(([platform, link]) => (
+            link && (
+              <a
+                href={link}
+                class="social-icon-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon name={socialIconMap[platform]} />
+              </a>
+            )
+          ))}
         </div>
       </div>
     ))}
   </div>
 </section>
 
-
+<style>
+  .social-icon-link {
+    @apply transition-transform transform hover:scale-110 hover:text-[#0000EE];
+  }
+</style>

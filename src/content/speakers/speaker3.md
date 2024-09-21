@@ -1,12 +1,12 @@
 ---
 title: "Pradip Dhungana"
-description: "Visionary Speaker on Technology and Future Trends"
+description: "Coming Soon"
 main:
   id: 3
   content: |
     Pradip Dhungana is a visionary in the field of technology and future trends. With a passion for exploring the digital landscape, Pradip has helped numerous organizations embrace the future through his insightful talks and workshops.
-  imgCard: "@/images/blog/pradip.jpg"
-  imgMain: "@/images/blog/pradip.jpg"
+  imgCard: "@/images/coming.png"
+  imgMain: "@/images/coming.png"
   imgAlt: "Portrait of Pradip Dhungana"
 tabs:
   - id: "tabs-with-card-item-1"
@@ -50,8 +50,8 @@ specificationsRight:
   - title: "Future Trends"
     subTitle: "Regularly forecasts future technology trends and their impact on various industries."
 publications:
-  first: "@/images/blog/pradip.jpg"
-  second: "@/images/blog/pradip.jpg"
+  first: "@/images/coming.png"
+  second: "@/images/coming.png"
 slug: speaker3    
 
 

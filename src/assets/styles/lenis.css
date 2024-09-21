@@ -18,3 +18,15 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+
+/* ::selection {
+    background-color: transparent !important;
+    color: #4dc1f7 !important;
+    text-shadow: 0 0 8px rgba(14, 165, 233, 0.8) !important;
+  } */
+  
+  ::selection {
+    background-color: transparent !important;
+    color: #eb0028 !important;
+    text-shadow: 0 0 8px rgba(235, 0, 40, 0.8) !important;
+  }

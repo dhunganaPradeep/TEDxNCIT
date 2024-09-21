@@ -1,0 +1,78 @@
+---
+// Import necessary components, modules and types
+import MainLayout from "@/layouts/MainLayout.astro";
+import CardInsight from "@components/ui/cards/CardInsight.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@data/constants";
+
+// Get all insights and sort them based on publish date
+
+const InsightsEntries = await getCollection("insights", ({ id }) => {
+  return id.startsWith("");
+});
+
+
+// Get all insights posts
+const insightPosts: CollectionEntry<"insights">[] = InsightsEntries;
+
+
+// Define variables for page content
+const title: string = "Insights";
+const subTitle: string =
+  "TEDxNCIT, organized by Nepal College of Information Technology (NCIT), delivers inspiring talks and ideas from a diverse range of speakers, aiming to foster innovation and creativity in our community..";
+
+const pageTitle: string = `Insights | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://tedx.ncit.edu.np/insights",
+    url: "https://tedx.ncit.edu.np/insights",
+    name: "Blog | TEDxNCIT",
+    description:
+      "TEDxNCIT, organized by Nepal College of Information Technology (NCIT), delivers inspiring talks and ideas from a diverse range of speakers, aiming to foster innovation and creativity in our community..",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://tedx.ncit.edu.np",
+      name: "TEDxNCIT",
+      description:
+        "TEDxNCIT, hosted by Nepal College of Information Technology (NCIT), is an independently organized TED event. It features short, powerful talks under a license from TED.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <section
+    class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full"
+  >
+    <!--Page header-->
+    <div class="mx-auto max-w-3xl text-left sm:text-center">
+      <h1
+        class="block text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-5xl lg:text-6xl"
+      >
+        {title}
+      </h1>
+
+      <p
+        class="mt-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400"
+      >
+        {subTitle}
+      </p>
+    </div>
+  </section>
+
+  <!--Insights section-->
+  <section
+    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        insightPosts.map((insightEntry) => (
+          <CardInsight insightEntry={insightEntry} />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>
