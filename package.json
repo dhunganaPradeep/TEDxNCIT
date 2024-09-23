@@ -23,7 +23,7 @@
     "@preline/overlay": "^2.4.1",
     "@preline/tabs": "^2.4.1",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/react": "^18.3.4",
+    "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
     "@vercel/nft": "^0.27.3",
     "astro": "^4.15.7",
