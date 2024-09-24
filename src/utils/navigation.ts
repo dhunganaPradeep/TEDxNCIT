@@ -21,7 +21,7 @@ const footerLinks = [
   {
     section: "Site Links",
     links: [
-      { name: "About us", url: "#" },
+      { name: "About us", url: "/#about" },
       { name: "Sponsors", url: "/sponsors" },
       { name: "Insights", url: "/insights" },
     ],
