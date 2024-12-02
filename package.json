@@ -26,7 +26,7 @@
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "@vercel/nft": "^0.27.3",
-    "astro": "^4.16.6",
+    "astro": "^4.16.16",
     "astro-compressor": "^0.4.1",
     "clipboard": "^2.0.11",
     "globby": "^14.0.2",
