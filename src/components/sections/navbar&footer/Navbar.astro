@@ -23,7 +23,7 @@ const homeUrl = Astro.currentLocale === "/";
       <!-- Brand logo -->
       <a
         class="flex-none rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
-        href="/"
+        href={import.meta.env.BASE_URL}
         aria-label="Brand"
       >
         <BrandLogo class="h-auto w-24" />

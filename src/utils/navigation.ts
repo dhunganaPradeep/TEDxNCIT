@@ -1,12 +1,14 @@
+const BASE = "/";
+
 // An array of links for navigation bar
 const navBarLinks = [
-  { name: "Home", url: "/" },
-  { name: "Speakers", url: "/speakers" },
-  { name: "Team", url: "/teams" },
-  { name: "Sponsors", url: "/sponsors" },
-  { name: "FAQ's", url: "/contact#faq-section" },
-  { name: "Contact", url: "/contact" },
-  { name: "Insights", url: "/insights" },
+  { name: "Home", url: BASE },
+  { name: "Speakers", url: `${BASE}speakers` },
+  { name: "Team", url:`${BASE}teams` },
+  { name: "Sponsors", url: `${BASE}sponsors` },
+  { name: "FAQ's", url: `${BASE}contact#faq-section` },
+  { name: "Contact", url: `${BASE}contact` },
+  { name: "Insights", url: `${BASE}insights` },
 ];
 // An array of links for footer
 const footerLinks = [

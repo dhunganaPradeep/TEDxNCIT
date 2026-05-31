@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "TED event",
   description: "TEDxNCIT is an independently organized TED event that we are hosting here at the Nepal College of Information Technology (NCIT). Like other TEDx events, TEDxNCIT operates under a license from TED, a nonprofit organization devoted to spreading ideas in the form of short, powerful talks.",
   description_short: "TEDxNCIT, hosted by Nepal College of Information Technology (NCIT), is an independently organized TED event. It features short, powerful talks under a license from TED. ",
-  url: "https://tedx.ncit.edu.np/",
+  url: "https://dhunganapradeep.github.io/TEDxNCIT/",
   author: "Pradip Dhungana",
 };
 
