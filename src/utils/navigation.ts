@@ -1,4 +1,4 @@
-const BASE = "/";
+const BASE = "/TEDxNCIT/";
 
 // An array of links for navigation bar
 const navBarLinks = [
