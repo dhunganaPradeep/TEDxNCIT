@@ -62,9 +62,9 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3   # ✅ updated
         with:
-          path: ./dist   # Astro’s default output folder
+          path: ./dist
 
   deploy:
     name: Deploy
@@ -72,4 +72,4 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4   # ✅ updated
