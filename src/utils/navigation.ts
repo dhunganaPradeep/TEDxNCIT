@@ -3,29 +3,29 @@ const BASE = "/TEDxNCIT/";
 // An array of links for navigation bar
 const navBarLinks = [
   { name: "Home", url: BASE },
-  { name: "Speakers", url: `${BASE}speakers` },
-  { name: "Team", url:`${BASE}teams` },
-  { name: "Sponsors", url: `${BASE}sponsors` },
-  { name: "FAQ's", url: `${BASE}contact#faq-section` },
-  { name: "Contact", url: `${BASE}contact` },
-  { name: "Insights", url: `${BASE}insights` },
+  { name: "Speakers", url: `${BASE}speakers/` },
+  { name: "Team", url:`${BASE}teams/` },
+  { name: "Sponsors", url: `${BASE}sponsors/` },
+  { name: "FAQ's", url: `${BASE}contact#faq-section/` },
+  { name: "Contact", url: `${BASE}contact/` },
+  { name: "Insights", url: `${BASE}insights/` },
 ];
 // An array of links for footer
 const footerLinks = [
   {
     section: "TEDxNCIT",
     links: [
-      { name: "NCIT", url: "https://ncit.edu.np/" },
-      { name: "FAQ's", url: "/contact#faq-section" },
+      { name: "NCIT", url: "https://dhunganapradeep.github.io/TEDxNCIT/" },
+      { name: "FAQ's", url: `${BASE}contact#faq-section/` },
       { name: "Privacy Policy", url: "https://www.ted.com/about/our-organization/our-policies-terms/privacy-policy" },
     ],
   },
   {
     section: "Site Links",
     links: [
-      { name: "About us", url: "/#about" },
-      { name: "Sponsors", url: "/sponsors" },
-      { name: "Insights", url: "/insights" },
+      { name: "About us", url: `${BASE}#about/` },
+      { name: "Sponsors", url: `${BASE}sponsors/` },
+      { name: "Insights", url: `${BASE}insights/` },
     ],
   },
 ];
